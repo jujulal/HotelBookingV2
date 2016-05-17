@@ -2,16 +2,18 @@ package org.mum.hotel.domain;
 
 
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Future;
 
 @Entity
 @Table(name = "Booking")
@@ -22,12 +24,14 @@ public class Booking {
 	@GeneratedValue
 	int bookingNo;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="customerNo")
 	Customer customer;
-	@OneToOne(cascade=CascadeType.ALL)
+	
+	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="roomNo")
 	Room bookedRoom;
+	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="billNo")
 	Billing bookingBill;
@@ -36,18 +40,32 @@ public class Booking {
 	//for date converting purpose
 	@Transient
 	String checkInDateTrans;
+	
+	@Future(message="Check-In Date entered is the past.")
 	Date checkInDate;
 	
 	@Transient
 	String checkoutDateTrans;
+	
+	@Future(message="Check-Out Date entered is the past.")
 	Date checkoutDate;
 	int noOfDays;
 	double actualPrice;
 	
+	private boolean bookedStatus;
+	
+	
 	public Booking(){
 		
 	}
+	public boolean isBookedStatus() {
+		return bookedStatus;
+	}
 	
+	public void setBookedStatus(boolean bookedStatus) {
+		this.bookedStatus = bookedStatus;
+	}
+
 	public Room getBookedRoom() {
 		return bookedRoom;
 	}

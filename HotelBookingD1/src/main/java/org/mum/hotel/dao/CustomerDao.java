@@ -26,5 +26,8 @@ public class CustomerDao {
 		 List<Customer> resultList = entityManager.createQuery("select * from Customer", Customer.class).getResultList();
 		return resultList;
 	}
-
+	
+	public Customer getCustomer(int custNo){
+		return entityManager.find(Customer.class, custNo);
+	}
 }

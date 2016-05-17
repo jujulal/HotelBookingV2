@@ -24,5 +24,9 @@ public class CustomerService {
 	public List<Customer> getAllCustomer(){
 		return customerDAO.getAllCustomers();
 	}
+	
+	public Customer getCustomer(int custNo){
+		return customerDAO.getCustomer(custNo);
+	}
 
 }

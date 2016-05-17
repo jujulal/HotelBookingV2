@@ -39,7 +39,6 @@ public class RoomController {
 	
 	@RequestMapping(value="/rooms/edit/{roomNo}", method=RequestMethod.POST)
 	public String editRoom(@PathVariable int roomNo, Model model){
-		//System.out.println(model.("roomNae"));
 		Room room = roomService.getRoom(roomNo);
 		model.addAttribute("roomData", room);
 		return "/rooms/editRoom";
@@ -61,7 +60,7 @@ public class RoomController {
 		
 		room.getRoomType().setRoomName(roomName);
 		room.getRoomType().setRoomPrice(roomPrice);
-		room.setBookedStatus(status);
+		//room.setBookedStatus(status);
 		room.setNoOfPersons(noPersons);
 		
 		roomService.save(room);

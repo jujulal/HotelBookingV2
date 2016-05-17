@@ -3,6 +3,7 @@ package org.mum.hotel.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.hibernate.validator.constraints.Email;
 
 @Entity
 public class Customer {
@@ -10,6 +11,7 @@ public class Customer {
 	private int customerNo; 
 	private String fristName; 
 	private String lastName;
+	@Email
 	private String email; 
 	private String phone; 
 	private String street; 

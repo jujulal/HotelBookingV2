@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.mum.hotel.dao.BookingDao;
 import org.mum.hotel.domain.Booking;
+import org.mum.hotel.domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,8 +38,30 @@ public class BookingService {
 		bookingDAO.addBooking(booking);
 	}
 	
+	public void createBooking(Booking booking){
+		bookingDAO.addBooking(booking);
+	}
+	
 	public List<Booking> getAllBooking(){
 		return bookingDAO.getAllBooking();
 	}
 
+	public List<Room> searchAvailableRooms(String checkIn,String checkOut,String num){
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		
+			try {
+				Date checkInDate = simpleDateFormat.parse(checkIn);
+				Date checkOutDate = simpleDateFormat.parse(checkOut);
+				int noPersons = Integer.parseInt(num);
+				
+				return bookingDAO.searchAvailableRooms(checkInDate,checkOutDate,noPersons);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+			
+			
+	
+	}
 }

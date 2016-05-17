@@ -10,7 +10,6 @@
 <body>
 	   <h1>All Rooms</h1>
 	   <p><a href="/hotel">Home</a></p>
-	   <p><a href="/hotel/rooms/available">Available Rooms</a></p>
        
         <table border="1">
             <tr>
@@ -18,7 +17,6 @@
                 <th>No of Persons</th>
                 <th>Description</th>
                 <th>Price</th>
-                <th>Booked Status</th>
             </tr>
             <c:forEach items="${rooms}" var="room">
             <form action="/hotel/rooms/edit/${room.roomNo}" method="post">
@@ -29,7 +27,6 @@
                     <td><c:out value="${room.noOfPersons}" /></td>
                     <td><c:out value="${room.description}" /></td>
                     <td><c:out value="${room.roomType.roomPrice}"/> </td>
-                    <td><c:out value="${room.bookedStatus}"/> </td>
                     <td><button type="submit" >Edit</button></td>
                 </tr>
               </form>

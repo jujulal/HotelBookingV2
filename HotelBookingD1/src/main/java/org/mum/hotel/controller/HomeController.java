@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 	
-	@Autowired
-	private RoomService roomService;
+	//@Autowired
+	//private RoomService roomService;
 
 	
 
@@ -34,12 +34,12 @@ public class HomeController {
 		//test hibernate
 		//RoomType rt = new RoomType("Single bed room",45.0);
 		//roomDao.create("new room", false, 1, rt);
-		Room room = new Room();
+		/*Room room = new Room();
 		RoomType rt = new RoomType("Single bed",45.0);
 		room.setDescription("newroom");
 		room.setNoOfPersons(1);
 		room.setRoomType(rt);
-		this.roomService.save(room);
+		this.roomService.save(room);*/
 		
 		//Date date = new Date();
 		//DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);

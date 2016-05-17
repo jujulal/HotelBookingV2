@@ -16,7 +16,6 @@
 		<p>NoOfPersons: <input type="text" name="NoPersons" value="${roomData.noOfPersons}"/></p>
 		<p>Description: <input type="text" name="description" value="${roomData.description}"/></p>
 		<p>Room Price: <input type="text" name="price" value="${roomData.roomType.roomPrice}"/></p>
-		<p>Booked Status: <input type="text" name="status" value="${roomData.bookedStatus}"/></p>
 		<p><button type="submit">Done</button></p>
 	</div>
  </form>

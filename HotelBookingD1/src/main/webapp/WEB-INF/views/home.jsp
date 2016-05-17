@@ -9,8 +9,7 @@
 
 <ul>
 	<li><a href="/hotel/booking">Booking</a></li>
-	<li><a href="">Avialable Room</a></li>
-	<li><a href="">Room Details</a></li>
+	<li><a href="/hotel/rooms">Room Details</a></li>
 	<li><a href="/hotel/booking">User</a></li>
 </ul>
 </div>

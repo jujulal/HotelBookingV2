@@ -1,11 +1,14 @@
 package org.mum.hotel.domain;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -14,12 +17,14 @@ public class Room {
 	@Id @GeneratedValue
 	private int roomNo;
 	private String description;
-	private boolean bookedStatus;
 	private int noOfPersons;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="roomTypeNo")
 	private RoomType roomType;
+	
+	@OneToMany(mappedBy="bookedRoom")
+	private List<Booking> bookings;
 	
 	public Room(){
 		
@@ -31,9 +36,7 @@ public class Room {
 	public String getDescription() {
 		return description;
 	}
-	public boolean isBookedStatus() {
-		return bookedStatus;
-	}
+
 	public int getNoOfPersons() {
 		return noOfPersons;
 	}
@@ -46,10 +49,6 @@ public class Room {
 		this.description = description;
 	}
 
-	public void setBookedStatus(boolean bookedStatus) {
-		this.bookedStatus = bookedStatus;
-	}
-
 	public void setNoOfPersons(int noOfPersons) {
 		this.noOfPersons = noOfPersons;
 	}
@@ -58,6 +57,12 @@ public class Room {
 	}
 	public void setRoomType(RoomType roomType) {
 		this.roomType = roomType;
+	}
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
 	}
 	
 }
