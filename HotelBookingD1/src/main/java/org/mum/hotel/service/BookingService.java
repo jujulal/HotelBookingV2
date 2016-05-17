@@ -48,7 +48,7 @@ public class BookingService {
 
 	public List<Room> searchAvailableRooms(String checkIn,String checkOut,String num){
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		
+		System.out.println("checkIn=="+checkIn);
 			try {
 				Date checkInDate = simpleDateFormat.parse(checkIn);
 				Date checkOutDate = simpleDateFormat.parse(checkOut);

@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.Email;
 public class Customer {
 	@Id @GeneratedValue
 	private int customerNo; 
-	private String fristName; 
+	private String firstName; 
 	private String lastName;
 	@Email
 	private String email; 
@@ -26,12 +26,15 @@ public class Customer {
 	public void setCustomerNo(int customerNo) {
 		this.customerNo = customerNo;
 	}
-	public String getFristName() {
-		return fristName;
+
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFristName(String fristName) {
-		this.fristName = fristName;
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}

@@ -62,6 +62,7 @@ public class BookingController {
 		
 		booking.setCheckInDateTrans(checkIn);
 		booking.setCheckoutDateTrans(checkOut);
+		System.out.println("date===="+checkIn+"======="+checkOut+"======"+num+"====");
 		
 		//Query on service based on params
 		List<Room> rooms = bookingService.searchAvailableRooms(checkIn,checkOut,num);
@@ -69,8 +70,8 @@ public class BookingController {
 		model.addAttribute("checkIn", checkIn);
 		model.addAttribute("checkOut", checkOut);
 		model.addAttribute("booking",booking);
+		System.out.println("date===="+checkIn+"======="+checkOut+"======"+num+"===="+rooms.size());
 		
-		//System.out.println("date===="+checkIn+"======="+checkOut+"======"+num+"===="+rooms.size());
 		return "/booking/bookingConfirm";
 	}
 	

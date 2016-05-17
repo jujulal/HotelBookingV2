@@ -26,6 +26,7 @@ public class RoomController {
 	@RequestMapping(value="/rooms",method=RequestMethod.GET)
 	public String getAllRooms(Model model){
 		List<Room> allRooms = roomService.getAllRooms();
+		System.out.println("size===="+allRooms.size());
 		model.addAttribute("rooms", allRooms);
 		return "/rooms/roomList";
 	}
