@@ -6,8 +6,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.mum.hotel.domain.Booking;
+import org.mum.hotel.domain.Booking_;
 import org.mum.hotel.domain.Customer;
 import org.mum.hotel.domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +45,20 @@ public class BookingDao {
 		List<Room> rooms = q.getResultList();
 	
 		return rooms;
+	}
+
+	public Booking getBookingByID(int id) {
+		// TODO Auto-generated method stub
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Booking> criteria = builder.createQuery( Booking.class );
+		Root<Booking> bookingRoot = criteria.from( Booking.class );
+		criteria.select( bookingRoot );
+		criteria.where( builder.equal( bookingRoot.get( Booking_.bookingNo), ""+id ) );
+		List<Booking> bookings = entityManager.createQuery( criteria ).getResultList();
+		Booking tempBooking= null;
+		if(bookings!=null&&bookings.size()>0){
+			tempBooking=bookings.get(0);
+		}
+		return tempBooking;
 	}
 }

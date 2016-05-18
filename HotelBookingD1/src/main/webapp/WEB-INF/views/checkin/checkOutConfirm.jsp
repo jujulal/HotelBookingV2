@@ -55,7 +55,7 @@
 		 <div class="panel panel-info">
     	<div class="panel-heading">Hotel: Bill</div>
     	<div class="panel-body">
-			<form action="${pageContext.request.contextPath}/checkout/" method="POST" class="form-horizontal" role="form">
+			<form action="${pageContext.request.contextPath}/checkout/confirmPayment" method="POST" class="form-horizontal" role="form">
 					<input type="hiddne" name="bookingNo" value="${booking.bookingNo}"/>
 						<div class="form-group">
 							<label for="checkInDate" class="col-sm-3 control-label">Check-In
@@ -152,7 +152,7 @@
 				<div class="form-group">
 					<label for="description" class="col-sm-3 control-label">Description</label>
 					<div class="col-sm-9">
-					<textarea rows="" cols="" name="discription" class="form-control" placeholder="Description"></textarea>
+					<textarea rows="" cols="" name="description" class="form-control" placeholder="Description"></textarea>
 					</div>
 				</div>
 				<div class="form-group">

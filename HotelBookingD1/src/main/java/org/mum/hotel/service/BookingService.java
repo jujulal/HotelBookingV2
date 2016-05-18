@@ -64,4 +64,9 @@ public class BookingService {
 			
 	
 	}
+
+	public Booking getBookingByID(int id) {
+		// TODO Auto-generated method stub
+		return bookingDAO.getBookingByID(id);
+	}
 }
