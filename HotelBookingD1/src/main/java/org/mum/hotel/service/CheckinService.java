@@ -51,6 +51,7 @@ public class CheckinService {
 			 date = simpleDateFormat.parse(simpleDateFormat.format(Calendar.getInstance().getTime()));
 			//System.out.println(date+""+date.getTime());
 			booking.setCheckInDate(new java.sql.Date(date.getTime()));
+			//booking.setBookedStatus(true);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,6 +65,7 @@ public class CheckinService {
 			 date = simpleDateFormat.parse(simpleDateFormat.format(Calendar.getInstance().getTime()));
 			//System.out.println(date+""+date.getTime());
 			booking.setCheckoutDate(new java.sql.Date(date.getTime()));
+			//booking.setBookedStatus(false);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,6 +1,8 @@
 package org.mum.hotel.controller;
 
+import org.mum.hotel.domain.Billing;
 import org.mum.hotel.domain.Booking;
+import org.mum.hotel.service.BillingService;
 import org.mum.hotel.service.CheckinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ public class CheckInController {
 
 	@Autowired
 	private CheckinService checkinService;
+	@Autowired
+	private BillingService billingService;
 
 	@RequestMapping(value = "/checkin")
 	public String loadcheckInForm(Model model) {
@@ -76,9 +80,30 @@ public class CheckInController {
 		return "/checkin/checkInConfirm";
 	}
 	
-	@RequestMapping(value="/checkout/confirmPayment")
-	public String checkOutMakePayment(){
+	@RequestMapping(value="/checkout/confirmPayment", method=RequestMethod.POST)
+	public String checkOutMakePayment(@ModelAttribute("booking")Booking booking,
+			@RequestParam("bookingNo")Integer bookingNo,
+			@RequestParam("roomCharge")Float roomCharge,
+			@RequestParam("miscCharge")Float miscCharge,
+			@RequestParam("tax")Float tax,
+			@RequestParam("discount")Float discount,
+			@RequestParam("billAmount")Float billAmount,
+			@RequestParam("description")String description
+			){
+		Billing bookingBill = new Billing();
+		bookingBill.setBookingNo(bookingNo);
+		bookingBill.setRoom_charge(roomCharge);
+		bookingBill.setMisc_charge(miscCharge);
+		bookingBill.setTax(tax);
+		bookingBill.setDiscount(discount);
+		bookingBill.setBill_amount(billAmount);
+		bookingBill.setDescription(description);
 		
+		billingService.addBilling(bookingBill);
+		//udating checkout date into Booking
+		checkinService.updateCheckOut(booking);
+		
+		//booking.setBookingBill(bookingBill);
 		return "/checkin/checOutPayment";
 	}
 }
